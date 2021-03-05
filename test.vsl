@@ -1,0 +1,3 @@
+def newton() begin //test (func, def)
+print "hi"
+end
