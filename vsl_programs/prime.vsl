@@ -1,5 +1,5 @@
 
-def main ()
+def main (test)  //ADDED 'test' AS PARAMETER FOR TESTING PURPOSES
 begin
     return factor (1836311903)
 end
@@ -9,7 +9,7 @@ begin
     var f
 
     f := n/2
-    while n - f*(n/f) > 0 DO
+    while n - f*(n/f) > 0 do
         f := f - 1
     if f > 1 then
     begin

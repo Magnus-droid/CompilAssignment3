@@ -52,22 +52,22 @@ expression_list :
 
 variable_list :
 	identifier { Node1Children ($$, VARIABLE_LIST, NULL, $1); }
-	| variable_list ',' identifier { Node2Children ($$, VARIABLE_LIST, NULL, $1, $2); };
+	| variable_list ',' identifier { Node2Children ($$, VARIABLE_LIST, NULL, $1, $3); };
 
 argument_list :
 	expression_list {Node1Children ($$, ARGUMENT_LIST, NULL, $1); }
-	| {$$ = NULL; };
+	| /* epsilon */ { $$ = NULL; };
 
 parameter_list :
 	variable_list {Node1Children ($$, PARAMETER_LIST, NULL, $1); }
-	| {$$ = NULL; };
+	| /* epsilon */ { $$ = NULL; };
 
 declaration_list :
 	declaration {Node1Children ($$, DECLARATION_LIST, NULL, $1); }
 	| declaration_list declaration {Node2Children ($$, DECLARATION_LIST, NULL, $1, $2); };
 
 function :
-	FUNC identifier '(' parameter_list ')' statement {Node3Children ($$, FUNCTION, NULL, $2, $4, $6); };
+	FUNC identifier '(' parameter_list ')' statement { Node3Children ($$, FUNCTION, NULL, $2, $4, $6); };
 
 statement :
 	assignment_statement {Node1Children ($$, STATEMENT, NULL, $1); }
@@ -102,22 +102,22 @@ while_statement :
 	WHILE relation DO statement {Node2Children ($$, WHILE_STATEMENT, NULL, $2, $4); };
 
 relation:
-	expression '=' expression {Node2Children ($$, RELATION, strdup('='), $1, $3); }
-	| expression '<' expression {Node2Children ($$, RELATION, strdup('<'), $1, $3); }
-	| expression '>' expression {Node2Children ($$, RELATION, strdup('>'), $1, $3); };
+	expression '=' expression {Node2Children ($$, RELATION, strdup("="), $1, $3); }
+	| expression '<' expression {Node2Children ($$, RELATION, strdup("<"), $1, $3); }
+	| expression '>' expression {Node2Children ($$, RELATION, strdup(">"), $1, $3); };
 
 expression :
-	expression '|' expression {Node2Children ($$, EXPRESSION, strdup('|'), $1, $3); }
-	| expression '^' expression {Node2Children ($$, EXPRESSION, strdup('^'), $1, $3); }
-	| expression '&' expression {Node2Children ($$, EXPRESSION, strdup('&'), $1, $3); }
-	| expression LSHIFT expression {Node2Children ($$, EXPRESSION, strdup('<<'), $1, $3); }
-	| expression RSHIFT expression {Node2Children ($$, EXPRESSION, strdup('>>'), $1, $3); }
-	| expression '+' expression {Node2Children ($$, EXPRESSION, strdup('+'), $1, $3); }
-	| expression '-' expression {Node2Children ($$, EXPRESSION, strdup('-'), $1, $3); }
-	| expression '*' expression {Node2Children ($$, EXPRESSION, strdup('*'), $1, $3); }
-	| expression '/' expression {Node2Children ($$, EXPRESSION, strdup('/'), $1, $3); }
-	| '-' expression %prec UMINUS {Node1Children ($$, EXPRESSION, strdup('-'), $2); }
-	| '~' expression %prec UMINUS {Node1Children ($$, EXPRESSION, strdup('~'), $2); }
+	expression '|' expression {Node2Children ($$, EXPRESSION, strdup("|"), $1, $3); }
+	| expression '^' expression {Node2Children ($$, EXPRESSION, strdup("^"), $1, $3); }
+	| expression '&' expression {Node2Children ($$, EXPRESSION, strdup("&"), $1, $3); }
+	| expression LSHIFT expression {Node2Children ($$, EXPRESSION, strdup("<<"), $1, $3); }
+	| expression RSHIFT expression {Node2Children ($$, EXPRESSION, strdup(">>"), $1, $3); }
+	| expression '+' expression {Node2Children ($$, EXPRESSION, strdup("+"), $1, $3); }
+	| expression '-' expression {Node2Children ($$, EXPRESSION, strdup("-"), $1, $3); }
+	| expression '*' expression {Node2Children ($$, EXPRESSION, strdup("*"), $1, $3); }
+	| expression '/' expression {Node2Children ($$, EXPRESSION, strdup("/"), $1, $3); }
+	| '-' expression %prec UMINUS {Node1Children ($$, EXPRESSION, strdup("-"), $2); }
+	| '~' expression %prec UMINUS {Node1Children ($$, EXPRESSION, strdup("~"), $2); }
 	| '(' expression ')' { $$ = $2; }
 	| number {Node1Children ($$, EXPRESSION, NULL, $1); }
 	| identifier {Node1Children ($$, EXPRESSION, NULL, $1); }
@@ -134,7 +134,9 @@ identifier:
 	IDENTIFIER {Node0Children ($$, IDENTIFIER_DATA, strdup(yytext)); };
 
 number :
-	NUMBER {Node0Children ($$, NUMBER_DATA, strdup(yytext)); };
+	NUMBER { int64_t *value = malloc(sizeof(int64_t));
+		 *value = strtol(yytext, NULL, 10);
+		 Node0Children ($$, NUMBER_DATA, strdup(yytext)); };
 
 string:
 	STRING {Node0Children ($$, STRING_DATA, strdup(yytext)); };

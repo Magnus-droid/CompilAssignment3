@@ -1,6 +1,6 @@
 #include "vslc.h"
-#define INIT_VARARG(x, ref) void* x = &ref
-#define GET_NEXT_VARARG(ptr, type) (*((type* ) (ptr +=sizeof(ptr))))
+//#define INIT_VARARG(x, ref) void* x = &ref
+//#define GET_NEXT_VARARG(ptr, type) (*((type* ) (ptr +=sizeof(ptr))))
 
 void
 node_print ( node_t *root, int nesting )
@@ -34,14 +34,19 @@ node_print ( node_t *root, int nesting )
 void
 node_init (node_t *nd, node_index_t type, void *data, uint64_t n_children, ...)
 {
-    INIT_VARARG(ptr, n_children);
+   // INIT_VARARG(ptr, n_children);
+    va_list child_list;
     nd->type = type;
     nd->data = data;
     nd->n_children = n_children;
     nd->children = (node_t **) malloc(n_children * sizeof(node_t*));
 
+    va_start(child_list, n_children);
     for (int64_t i = 0; i < nd->n_children; i++) {
-	nd->children[i] = GET_NEXT_VARARG(ptr, node_t*);
+	printf("%ld\n", i);
+	nd->children[i] = va_arg(child_list, node_t*);
+	//nd->children[i] = GET_NEXT_VARARG(ptr, node_t*);
+    va_end(child_list);
     }
 
 }
@@ -51,9 +56,6 @@ node_init (node_t *nd, node_index_t type, void *data, uint64_t n_children, ...)
 void
 node_finalize ( node_t *discard )
 {
-
-    free(discard->data);
-    free(discard->n_children);
     free(discard->children);
     free(discard);
 }
@@ -66,5 +68,5 @@ destroy_subtree ( node_t *discard )
     for(uint64_t i=0; i < discard->n_children; i++)
         destroy_subtree(discard->children[i]);
 
-    node_finalize(discard);
+    free(discard);
 }

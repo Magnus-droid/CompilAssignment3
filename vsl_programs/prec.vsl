@@ -1,4 +1,4 @@
-def unary_minus_precedence()
+def unary_minus_precedence(test)
 begin
     var a, b
     a := -1*2

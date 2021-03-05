@@ -8,7 +8,6 @@ int
 main ( int argc, char **argv )
 {
     yyparse();
-    printf("HALLO");
     node_print ( root, 0 );
     destroy_subtree ( root );
 }

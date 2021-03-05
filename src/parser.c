@@ -531,7 +531,7 @@ static const yytype_uint8 yyrline[] =
       83,    86,    89,    92,    95,    98,    99,   102,   105,   106,
      107,   110,   111,   112,   113,   114,   115,   116,   117,   118,
      119,   120,   121,   122,   123,   124,   127,   130,   131,   134,
-     137,   140
+     137,   142
 };
 #endif
 
@@ -1484,7 +1484,7 @@ yyreduce:
 
   case 14:
 #line 55 "src/parser.y"
-                                       { Node2Children (yyval, VARIABLE_LIST, NULL, yyvsp[-2], yyvsp[-1]); }
+                                       { Node2Children (yyval, VARIABLE_LIST, NULL, yyvsp[-2], yyvsp[0]); }
 #line 1489 "y.tab.c"
     break;
 
@@ -1496,7 +1496,7 @@ yyreduce:
 
   case 16:
 #line 59 "src/parser.y"
-          {yyval = NULL; }
+                        { yyval = NULL; }
 #line 1501 "y.tab.c"
     break;
 
@@ -1508,7 +1508,7 @@ yyreduce:
 
   case 18:
 #line 63 "src/parser.y"
-          {yyval = NULL; }
+                        { yyval = NULL; }
 #line 1513 "y.tab.c"
     break;
 
@@ -1526,7 +1526,7 @@ yyreduce:
 
   case 21:
 #line 70 "src/parser.y"
-                                                         {Node3Children (yyval, FUNCTION, NULL, yyvsp[-4], yyvsp[-2], yyvsp[0]); }
+                                                         { Node3Children (yyval, FUNCTION, NULL, yyvsp[-4], yyvsp[-2], yyvsp[0]); }
 #line 1531 "y.tab.c"
     break;
 
@@ -1628,85 +1628,85 @@ yyreduce:
 
   case 38:
 #line 105 "src/parser.y"
-                                  {Node2Children (yyval, RELATION, strdup('='), yyvsp[-2], yyvsp[0]); }
+                                  {Node2Children (yyval, RELATION, strdup("="), yyvsp[-2], yyvsp[0]); }
 #line 1633 "y.tab.c"
     break;
 
   case 39:
 #line 106 "src/parser.y"
-                                    {Node2Children (yyval, RELATION, strdup('<'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, RELATION, strdup("<"), yyvsp[-2], yyvsp[0]); }
 #line 1639 "y.tab.c"
     break;
 
   case 40:
 #line 107 "src/parser.y"
-                                    {Node2Children (yyval, RELATION, strdup('>'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, RELATION, strdup(">"), yyvsp[-2], yyvsp[0]); }
 #line 1645 "y.tab.c"
     break;
 
   case 41:
 #line 110 "src/parser.y"
-                                  {Node2Children (yyval, EXPRESSION, strdup('|'), yyvsp[-2], yyvsp[0]); }
+                                  {Node2Children (yyval, EXPRESSION, strdup("|"), yyvsp[-2], yyvsp[0]); }
 #line 1651 "y.tab.c"
     break;
 
   case 42:
 #line 111 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('^'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("^"), yyvsp[-2], yyvsp[0]); }
 #line 1657 "y.tab.c"
     break;
 
   case 43:
 #line 112 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('&'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("&"), yyvsp[-2], yyvsp[0]); }
 #line 1663 "y.tab.c"
     break;
 
   case 44:
 #line 113 "src/parser.y"
-                                       {Node2Children (yyval, EXPRESSION, strdup('<<'), yyvsp[-2], yyvsp[0]); }
+                                       {Node2Children (yyval, EXPRESSION, strdup("<<"), yyvsp[-2], yyvsp[0]); }
 #line 1669 "y.tab.c"
     break;
 
   case 45:
 #line 114 "src/parser.y"
-                                       {Node2Children (yyval, EXPRESSION, strdup('>>'), yyvsp[-2], yyvsp[0]); }
+                                       {Node2Children (yyval, EXPRESSION, strdup(">>"), yyvsp[-2], yyvsp[0]); }
 #line 1675 "y.tab.c"
     break;
 
   case 46:
 #line 115 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('+'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("+"), yyvsp[-2], yyvsp[0]); }
 #line 1681 "y.tab.c"
     break;
 
   case 47:
 #line 116 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('-'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("-"), yyvsp[-2], yyvsp[0]); }
 #line 1687 "y.tab.c"
     break;
 
   case 48:
 #line 117 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('*'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("*"), yyvsp[-2], yyvsp[0]); }
 #line 1693 "y.tab.c"
     break;
 
   case 49:
 #line 118 "src/parser.y"
-                                    {Node2Children (yyval, EXPRESSION, strdup('/'), yyvsp[-2], yyvsp[0]); }
+                                    {Node2Children (yyval, EXPRESSION, strdup("/"), yyvsp[-2], yyvsp[0]); }
 #line 1699 "y.tab.c"
     break;
 
   case 50:
 #line 119 "src/parser.y"
-                                      {Node1Children (yyval, EXPRESSION, strdup('-'), yyvsp[0]); }
+                                      {Node1Children (yyval, EXPRESSION, strdup("-"), yyvsp[0]); }
 #line 1705 "y.tab.c"
     break;
 
   case 51:
 #line 120 "src/parser.y"
-                                      {Node1Children (yyval, EXPRESSION, strdup('~'), yyvsp[0]); }
+                                      {Node1Children (yyval, EXPRESSION, strdup("~"), yyvsp[0]); }
 #line 1711 "y.tab.c"
     break;
 
@@ -1760,18 +1760,20 @@ yyreduce:
 
   case 60:
 #line 137 "src/parser.y"
-               {Node0Children (yyval, NUMBER_DATA, strdup(yytext)); }
-#line 1765 "y.tab.c"
+               { int64_t *value = malloc(sizeof(int64_t));
+		 *value = strtol(yytext, NULL, 10);
+		 Node0Children (yyval, NUMBER_DATA, strdup(yytext)); }
+#line 1767 "y.tab.c"
     break;
 
   case 61:
-#line 140 "src/parser.y"
+#line 142 "src/parser.y"
                {Node0Children (yyval, STRING_DATA, strdup(yytext)); }
-#line 1771 "y.tab.c"
+#line 1773 "y.tab.c"
     break;
 
 
-#line 1775 "y.tab.c"
+#line 1777 "y.tab.c"
 
       default: break;
     }
@@ -2003,7 +2005,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 142 "src/parser.y"
+#line 144 "src/parser.y"
 
 
 int

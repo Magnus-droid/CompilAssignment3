@@ -6,12 +6,13 @@
 %option yylineno
 
 %%
-\/\/[^\n]*			{ }
-[\ \n\t\r\v]+                   { }
+\/\/[^\n]+			{/* Do nothing */}
+[\ \n\t\r\v]+                   {/* Do nothing */}
 def                             { return FUNC; }
 begin                           { return OPENBLOCK; }
 end		                { return CLOSEBLOCK; }
 return                          { return RETURN; }
+continue			{ return CONTINUE; }
 print		                { return PRINT; }
 if                              { return IF; }
 then                            { return THEN; }
@@ -23,7 +24,7 @@ var		                { return VAR; }
 ">>"		                { return RSHIFT; }
 ~                               { return UMINUS; }
 [0-9]+			        { return NUMBER; }
-[A-Za-z][A-Za-z0-9_]*		{ return IDENTIFIER; }
+[A-Za-z_][A-Za-z0-9_]*	        { return IDENTIFIER; }
 \".*?\"				{ return STRING; }
 .                               { return yytext[0]; }
 %%

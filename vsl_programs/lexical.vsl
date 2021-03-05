@@ -1,7 +1,7 @@
 // This program doesn't do anything interesting, it's just to exercise
 // most of the lexical entities.
 
-def main() begin                   // def, identifier (func. def.)
+def main() begin                   // def, identifier (func. def.), GIVEN PARAMETER 'TEST' FOR TESTING
     var a, _a1, a_2             // var, identifier, comma operator
     print "Hello, world!"       // print keyword, string literal
 	print ""                    // Whitespace: line starts on a tab character
@@ -16,7 +16,7 @@ def main() begin                   // def, identifier (func. def.)
     a := _a1 - a_2              // Minus operator
     print _a1, "-", a_2, ":=", a
 
-    a := _a1 + (-a_2)           // Parentheses, unary minus operator
+    a := _a1 + (-a_2)		//Parentheses unary operator
     print _a1, "+ (-", a_2, ") :=", a
 
     a := _a1 * a_2              // Multiply operator
@@ -29,7 +29,7 @@ def main() begin                   // def, identifier (func. def.)
         print a
 
     // This loop prints the integers 5 through 0, skipping 2
-    while a > 0 DO              // while/DO, block statements
+    while a > 0 do              // while/DO, block statements
     begin
         if a - 3 > 0 then       // if/then/else/FI
             a := a - 1
