@@ -66,8 +66,7 @@ extern int yydebug;
     VAR = 272,
     NUMBER = 273,
     IDENTIFIER = 274,
-    STRING = 275,
-    LOWER_THAN_ELSE = 276
+    STRING = 275
   };
 #endif
 

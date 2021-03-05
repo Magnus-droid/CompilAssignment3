@@ -1,5 +1,5 @@
 
-def main (test)  //ADDED 'test' AS PARAMETER FOR TESTING PURPOSES
+def main ()
 begin
     return factor (1836311903)
 end

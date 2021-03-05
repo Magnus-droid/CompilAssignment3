@@ -1,0 +1,107 @@
+0
+0
+1
+0
+0
+0
+0
+0
+0
+1
+0
+1
+0
+0
+0
+0
+0
+0
+1
+0
+1
+0
+0
+1
+0
+0
+0
+1
+0
+0
+0
+1
+0
+1
+0
+1
+0
+0
+1
+0
+0
+0
+0
+1
+0
+1
+0
+0
+1
+2
+0
+0
+0
+ PROGRAM
+ GLOBAL_LIST
+  GLOBAL
+   FUNCTION
+    IDENTIFIER_DATA(unary_minus_precedence)
+    (nil)
+    STATEMENT
+     BLOCK
+      DECLARATION_LIST
+       DECLARATION
+        VARIABLE_LIST
+         VARIABLE_LIST
+          IDENTIFIER_DATA(a)
+         IDENTIFIER_DATA(b)
+      STATEMENT_LIST
+       STATEMENT_LIST
+        STATEMENT_LIST
+         STATEMENT_LIST
+          STATEMENT
+           ASSIGNMENT_STATEMENT
+            IDENTIFIER_DATA(a)
+            EXPRESSION(*)
+             EXPRESSION(-)
+              EXPRESSION((null))
+               NUMBER_DATA(49)
+             EXPRESSION((null))
+              NUMBER_DATA(50)
+         STATEMENT
+          ASSIGNMENT_STATEMENT
+           IDENTIFIER_DATA(b)
+           EXPRESSION(*)
+            EXPRESSION(-)
+             EXPRESSION((null))
+              NUMBER_DATA(49)
+            EXPRESSION((null))
+             NUMBER_DATA(50)
+        STATEMENT
+         ASSIGNMENT_STATEMENT
+          IDENTIFIER_DATA(c)
+          EXPRESSION(|)
+           EXPRESSION(>>)
+            EXPRESSION((null))
+             IDENTIFIER_DATA(a)
+            EXPRESSION((null))
+             NUMBER_DATA(49)
+           EXPRESSION(<<)
+            EXPRESSION((null))
+             IDENTIFIER_DATA(b)
+            EXPRESSION((null))
+             NUMBER_DATA(51)
+       STATEMENT
+        RETURN_STATEMENT
+         EXPRESSION((null))
+          NUMBER_DATA(48)

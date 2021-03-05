@@ -18,13 +18,13 @@
 %left '*' '/'
 %nonassoc UMINUS
 %right '~'
-	//%expect 1
+%expect 1
 
 %token FUNC PRINT RETURN CONTINUE IF THEN ELSE WHILE DO OPENBLOCK CLOSEBLOCK
 %token VAR NUMBER IDENTIFIER STRING LSHIFT RSHIFT
 
-%nonassoc LOWER_THAN_ELSE
-%nonassoc ELSE
+//%nonassoc LOWER_THAN_ELSE
+//%nonassoc ELSE
 
 %%
 program :
@@ -95,7 +95,7 @@ null_statement :
 	CONTINUE {Node0Children ($$, NULL_STATEMENT, NULL); };
 
 if_statement :
-	IF relation THEN statement %prec LOWER_THAN_ELSE {Node2Children ($$, IF_STATEMENT, NULL, $2, $4); }
+	IF relation THEN statement {Node2Children ($$, IF_STATEMENT, NULL, $2, $4); }
 	| IF relation THEN statement ELSE statement {Node3Children ($$, IF_STATEMENT, NULL, $2, $4, $6); };
 
 while_statement :

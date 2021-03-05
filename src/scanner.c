@@ -808,13 +808,13 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 9 "src/scanner.l"
-{/* Do nothing */}
+/* Do nothing */
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 10 "src/scanner.l"
-{/* Do nothing */}
+/* Do nothing */
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
@@ -1935,5 +1935,4 @@ void yyfree (void * ptr )
 
 #line 30 "src/scanner.l"
 
-// check if order of rules is good
 

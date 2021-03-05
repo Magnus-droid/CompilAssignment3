@@ -6,8 +6,8 @@
 %option yylineno
 
 %%
-\/\/[^\n]+			{/* Do nothing */}
-[\ \n\t\r\v]+                   {/* Do nothing */}
+\/\/[^\n]+			/* Do nothing */
+[\ \n\t\r\v]+                   /* Do nothing */
 def                             { return FUNC; }
 begin                           { return OPENBLOCK; }
 end		                { return CLOSEBLOCK; }
@@ -28,4 +28,3 @@ var		                { return VAR; }
 \".*?\"				{ return STRING; }
 .                               { return yytext[0]; }
 %%
-// check if order of rules is good

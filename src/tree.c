@@ -18,7 +18,7 @@ node_print ( node_t *root, int nesting )
              root->type == EXPRESSION ) 
             printf ( "(%s)", (char *) root->data );
         else if ( root->type == NUMBER_DATA )
-            printf ( "(%lld)", *((int64_t *)root->data) );
+            printf ( "(%ld)", *((int64_t *)root->data) );
 
         /* Make a new line, and traverse the node's children in the same manner */
         putchar ( '\n' );
@@ -56,8 +56,10 @@ node_init (node_t *nd, node_index_t type, void *data, uint64_t n_children, ...)
 void
 node_finalize ( node_t *discard )
 {
-    free(discard->children);
-    free(discard);
+    if (discard != NULL) {
+	free(discard->children);
+	free(discard);
+    }
 }
 
 
@@ -65,8 +67,9 @@ node_finalize ( node_t *discard )
 void
 destroy_subtree ( node_t *discard )
 {
-    for(uint64_t i=0; i < discard->n_children; i++)
-        destroy_subtree(discard->children[i]);
-
-    free(discard);
+    if (discard != NULL) {
+	for(uint64_t i=0; i < discard->n_children; i++)
+	    destroy_subtree(discard->children[i]);
+	free(discard);
+    }
 }
